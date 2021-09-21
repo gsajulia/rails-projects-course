@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'error', to: 'pages#error'
 
   get 'blog', to: redirect("https://gsajulia.github.io/")
-  resources :projects
+  resources :projects do
+    resources :tasks, except: [:index], controller: 'projects/tasks'
+  end
   
   root 'pages#home'
 
